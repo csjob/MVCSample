@@ -13,6 +13,22 @@ namespace MVCSample
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            /* // this is custom route 
+             //for calling   /movies/released/2016/02
+             routes.MapRoute(
+                 name: "MoviesByreleaseDate",
+                 url: "movies/released/{year}/{month}",
+                 new { controller = "Movies", action = "ByReleaseDate"},
+                 new {year = @"\d{4}", month = @"\d{2}"}
+
+                 );
+            */
+
+            routes.MapMvcAttributeRoutes();
+
+            //we need to add this before default because the order of the route matters
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
